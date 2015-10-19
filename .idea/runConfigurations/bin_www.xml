@@ -2,6 +2,8 @@
   <configuration default="false" name="bin\www" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="C:/Program Files/nodejs/node" path-to-js-file="bin/www" working-dir="$PROJECT_DIR$">
     <envs>
       <env name="DEBUG" value="endless-expert:*" />
+      <env name="API_KEY" value="45376442" />
+      <env name="API_SECRET" value="1e01fb710c83dd678da11c425afe5c7d24ec9d88" />
     </envs>
     <browser url="http://localhost:3000/" />
     <method />
