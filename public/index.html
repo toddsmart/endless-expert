@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>PresenceKit</title>
+    <title>Endless Expert</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/app.css">
@@ -18,7 +18,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/">PresenceKit</a>
+          <a class="navbar-brand" href="/">Endless Expert: Chat with Presence</a>
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse-1">
           <div class="navbar-right">
@@ -35,15 +35,15 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title" id="connect-modal-label">Welcome to PresenceKit</h4>
-            <h4><small>An OpenTok one-to-one solution focussed on adding presence</small></h4>
+            <h4 class="modal-title" id="connect-modal-label">Welcome to Endless Expert: Chat with Presence</h4>
+            <h4><small>An OpenTok one-to-one solution focused on adding presence</small></h4>
           </div>
           <div class="modal-body">
             <p>If this is your first time testing the application, you will need a group of users to also join and test with you. If you would like
             to start testing on your own, you could also open <a href="/" target="_blank">another window with the same address</a>, side by side, 
             and enter two different names.</p>
             <p>After pressing the "Connect" button below, the upper right shows your username and indicates that you are connected. All other users
-            that are connected will appear in the "Buddies" list. When a user is available for a call, the camera icon button next to their name
+            that are connected will appear in the "Experts" list. When a user is available for a call, the camera icon button next to their name
             is used to invite that user to a video chat.</p>
             <p>Get started by filling out the form:</p>
             <form role="form" id="connect-form">
@@ -72,7 +72,7 @@
     <!-- Buddy List template -->
     <script type="text/template" id="tpl-buddy-list">
       <div class="panel-heading">
-        <h3 class="panel-title">Buddies</h3>
+        <h3 class="panel-title">Experts</h3>
       </div>
       <div class="list-group">
         <% if (_.size(users) > 0) { %>
@@ -88,7 +88,7 @@
           <% }); %>
         <% } else { %>
             <div class="list-group-item">
-              <p class="list-group-item-text">No Buddies</p>
+              <p class="list-group-item-text">No Experts</p>
             </div>
         <% } %>
       </div>
@@ -144,7 +144,7 @@
           <h3 class="panel-title"></h3>
         </div>
         <div class="panel-body video-holder empty">
-          <p class="lead">Invite a Buddy to start chatting</p>
+          <p class="lead">Invite an Expert to start chatting</p>
         </div>
       <% } %>
     </script>

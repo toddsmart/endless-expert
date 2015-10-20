@@ -22,26 +22,6 @@ if (!apiKey || !apiSecret || !presenceSessionId) {
 // Initialize OpenTok
 var opentok = new OpenTok(apiKey, apiSecret);
 
-// Create a session and store it for lookup later
-opentok.createSession(function(err, session) {
-    if (err) throw err;
-    opentok.sessionId = session.sessionId;
-});
-
-/**
- * Note: this is going to be deprecated once we get the upated API below this method completed
- */
-router.get('/', function(req, res, next) {
-    var sessionId = opentok.sessionId,
-        token = opentok.generateToken(sessionId); // generate a fresh token for this client
-
-    res.render('opentok', {
-        apiKey: apiKey,
-        sessionId: sessionId,
-        token: token
-    });
-});
-
 // Presence configuration
 //
 // Response: (JSON encoded)
@@ -80,7 +60,7 @@ router.post('/users', function(req, res, next) {
     }
 
     token = opentok.generateToken(presenceSessionId, {
-        data : '"name=' + name + '"' ,
+        data : '{"name" : "' + name + '"}',
         role : 'subscriber'
     });
 
@@ -89,6 +69,36 @@ router.post('/users', function(req, res, next) {
     }
 
     res.send(response);
+});
+
+// Create a chat
+//
+// Request: (JSON encoded)
+// *  `invitee`: the name of the other user who is being invited to the chat
+//
+// Response: (JSON encoded)
+// *  `apiKey`: an OpenTok API key that owns the session ID
+// *  `sessionId`: an OpenTok session ID to conduct the chat within
+// *  `token`: a token that the creator of the chat (or inviter) can use to connect to the chat
+//    session
+//
+// NOTE: This request is designed in a manner that would make it convenient to add user
+// authentication in the future. The `invitee` field is not currently used but could be used to help
+// verify that a user who attempts to create a chat is allowed to do so. An alternative design could
+// be to hand both the `inviterToken` and `inviteeToken` to the inviter, who could then send the
+// invitee a token over an OpenTok signal. The drawback of that design would be that the server
+// loses the ability to keep track of the state of a user (such as if they have joined a chat or not).
+router.post('/chats', function(req, res, next) {
+    opentok.createSession(function(err, session) {
+        if (err) throw err;
+        var responseData = {
+            apiKey : apiKey,
+            sessionId : session.sessionId,
+            token : session.generateToken()
+        };
+
+        res.send(responseData);
+    });
 });
 
 module.exports = router;
