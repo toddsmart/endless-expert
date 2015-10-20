@@ -4,6 +4,7 @@
       <env name="DEBUG" value="endless-expert:*" />
       <env name="API_KEY" value="45376442" />
       <env name="API_SECRET" value="1e01fb710c83dd678da11c425afe5c7d24ec9d88" />
+      <env name="PRESENCE_SESSION" value="2_MX40NTM3NjQ0Mn5-MTQ0NTM1MzkyNDA0OX5KK3pDNXI0VU5aa2xXbytsSE9rNWlUZ1d-UH4" />
     </envs>
     <browser url="http://localhost:3000/" />
     <method />
