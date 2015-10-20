@@ -70,7 +70,7 @@ router.get('/presence', function(req, res, next) {
 // response is given.
 // NOTE: Uniqueness of names is not enforced.
 router.post('/users', function(req, res, next) {
-    var name = req.params.name,
+    var name = req.body.name,
         token,
         response;
 
@@ -80,10 +80,8 @@ router.post('/users', function(req, res, next) {
     }
 
     token = opentok.generateToken(presenceSessionId, {
-        'data' : {
-            'name' : name,
-            'role' : 'Role::SUBSCRIBER'
-        }
+        data : '"name=' + name + '"' ,
+        role : 'subscriber'
     });
 
     response = {
