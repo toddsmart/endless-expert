@@ -53,7 +53,7 @@
     },
 
     retrievePresenceConfig: function() {
-      $.get('/opentok/presence')
+      $.get('/presence')
         .done(function(presenceConfig) {
           log.info('App: presenceSessionReady');
           App.presenceSession = OT.initSession(presenceConfig.apiKey, presenceConfig.sessionId);
