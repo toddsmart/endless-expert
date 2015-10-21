@@ -1,5 +1,16 @@
 # Endless Expert: Chat with Presence (based on the OpenTok On-Demand Meeting Starter Kit)
 
+## Setup
+
+1. Requires account on (OpenTok)[https://dashboard.tokbox.com/].
+
+2. Copy the config/development/opentok.php.sample file to config/development/opentok.php and 
+   replace the key and secret settings with your OpenTok API key and secret, from the TokBox
+   Dashboard.
+   
+3. Generate one relayed session (you may use the Project Tools in the Dashboard)
+   and use the Session ID to replace the presenceSession setting.
+
 ## Usage
 
 1. Visit the URL mapped to the application by your web server.
