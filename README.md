@@ -2,7 +2,7 @@
 
 ## Setup
 
-1. Requires account on (OpenTok)[https://dashboard.tokbox.com/].
+1. Requires account on [OpenTok](https://dashboard.tokbox.com/).
 
 2. Copy the config/development/opentok.php.sample file to config/development/opentok.php and 
    replace the key and secret settings with your OpenTok API key and secret, from the TokBox
