@@ -45,8 +45,6 @@ var opentok = new OpenTok(apiKey, apiSecret);
 // *  `apiKey`: The presence session API Key
 // *  `sessionId`: The presence session ID
 router.get('/presence', function(req, res, next) {
-    var sessionId = opentok.sessionId;
-
     res.send({
         'apiKey': apiKey,
         'sessionId': presenceSessionId
@@ -73,12 +71,12 @@ router.post('/users', function(req, res, next) {
 
     // Parameter validation
     if (!name || name.length > NAME_MAX_LENGTH) {
-        res.status(400).send('Length larger than: ' + NAME_MAX_LENGTH);
+        res.status(400).send('Length of name may not be larger than: ' + NAME_MAX_LENGTH);
         return;
     }
 
     token = opentok.generateToken(presenceSessionId, {
-        data : '{"name" : "' + name + '"}',
+        data : JSON.stringify({name : name}),
         role : 'subscriber'
     });
 
